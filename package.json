@@ -4,7 +4,7 @@
   "description": "Playground Simulcast",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./src/chrome.html --port 2345"
+    "start": "webpack-dev-server --port 8000"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/aggresss/simulcast-playground#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "parcel": "^1.12.4"
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
