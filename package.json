@@ -1,0 +1,25 @@
+{
+  "name": "simulcast-playground",
+  "version": "1.0.0",
+  "description": "Playground Simulcast",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./src/chrome.html --port 2345"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aggresss/simulcast-playground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aggresss/simulcast-playground/issues"
+  },
+  "homepage": "https://github.com/aggresss/simulcast-playground#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "parcel": "^1.12.4"
+  }
+}
