@@ -30,6 +30,7 @@ window.RTCPeerConnection.prototype.createOffer = function() {
   delete offerOptions.numberOfSimulcastLayers;
   return nativeCreateOffer.apply(this, arguments)
     .then(({type, sdp}) => {
+      console.log(`Create original offer SDP:\n%c${sdp}`, 'color:#0F0;')
       const sections = SDPUtils.splitSections(sdp);
       /* sdp munging code. Really, its just extracting some information (ssrc, cname and msid) and reusing it.
        * It could just set a different set of ssrc instead of trying to reuse the first.
@@ -87,6 +88,7 @@ window.RTCPeerConnection.prototype.createOffer = function() {
 
       lines.push('a=ssrc-group:SIM ' + simSSRCs.join(' '));
       sections[firstVideoIndex] = lines.join('\r\n') + '\r\n';
+      console.log(`Trun out offer SDP:\n%c${sections.join('')}`, 'color:#0FF;')
       return new RTCSessionDescription({type, sdp: sections.join('')});
     });
 }
