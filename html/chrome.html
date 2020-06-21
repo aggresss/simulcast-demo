@@ -157,6 +157,7 @@ navigator.mediaDevices.getUserMedia({video: {width: 1280, height: 720}})
           'a=ssrc:' + rtxSSRC3 + ' cname:something\r\n' +
           'a=ssrc-group:FID ' + videoSSRC3 + ' ' + rtxSSRC3 + '\r\n';
     }
+    console.log(`Send munging offer SDP:\n%c${sdp}`, 'color:#F0F;')
     return Promise.all([
         pc1.setLocalDescription(offer),
         pc2.setRemoteDescription({
