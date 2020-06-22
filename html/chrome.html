@@ -184,7 +184,7 @@ navigator.mediaDevices.getUserMedia({video: {width: 1280, height: 720}})
             reducedSize: rtcpParameters.reducedSize,
         });
     sdp += codecs;
-
+    console.log(`Answer from other peer SDP:\n%c${sdp}`, 'color:#FF0;')
     return Promise.all([
         pc2.setLocalDescription(answer),
         pc1.setRemoteDescription({
