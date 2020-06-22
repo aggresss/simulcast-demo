@@ -11,7 +11,8 @@ the result both visually as well as to getStats()
     2. 将单个 m-line 拆分成多个 m-line (将当个 MediaStream 拆分成多个 MediaStream)，由  group/mid 进行组合传输，标记每个 track 的 msid，对端 peer 可以将这三个 track 分别进行渲染和播放；
 
 * [Firefox](https://aggresss.github.io/simulcast-playground/html/firefox)
-    * 实现方式
+    1. 使用 addTransceiver() 方法，在 sendEncodings 中加入 rid 数组 的方式开启 simulcast；SDP 信息中同时包含 rid 和 SSRC；
+    2. 将单个 m-line 拆分成多个 m-line (将当个 MediaStream 拆分成多个 MediaStream)，由  group/mid 进行组合传输，标记每个 track 的 msid，对端 peer 可以将这三个 track 分别进行渲染和播放；
 
 See the [WebRTCHacks blog post](https://webrtchacks.com/a-playground-for-simulcast-without-an-sfu/) for more information.
 

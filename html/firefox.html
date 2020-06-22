@@ -45,6 +45,7 @@ navigator.mediaDevices.getUserMedia({video: {wіdth: 1280, height: 720}})
     return pc1.createOffer();
 })
 .then(offer => {
+    console.log(`addTransceiver create offer:\n%c${offer.sdp}`, 'color:#00FF00')
     const sections = SDPUtils.splitSections(offer.sdp);
     const dtls = SDPUtils.getDtlsParameters(sections[1], sections[0]);
     const ice = SDPUtils.getIceParameters(sections[1], sections[0]);
@@ -78,6 +79,7 @@ navigator.mediaDevices.getUserMedia({video: {wіdth: 1280, height: 720}})
         'a=msid:hi hi\r\n' +
         ssrcs[2] + '\r\n';
     ssrc2track = ssrcs.map(line => (line.split(' ')[0].split(':')[1] >>> 0));
+    console.log(`Offer send to other peer:\n%c${sdp}`, 'color:#00FFFF')
     return Promise.all([
         pc1.setLocalDescription(offer),
         pc2.setRemoteDescription({type: 'offer', sdp})
@@ -116,6 +118,7 @@ navigator.mediaDevices.getUserMedia({video: {wіdth: 1280, height: 720}})
             sdp += 'a=extmap:' + ext.id + ' ' + ext.uri + '\r\n';
         }
     });
+    console.log(`Answer SDP from other peer:\n%c${sdp}`, 'color:#FF00FF')
     return Promise.all([
         pc2.setLocalDescription(answer),
         pc1.setRemoteDescription({type: 'answer', sdp})
